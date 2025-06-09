@@ -1,0 +1,627 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  padding: 0rem 4rem;
+}
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.main {
+  background-color: white;
+  padding: 0rem 3rem;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  color: #083378;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  border: 2px solid #083378;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+.form .input {
+  width: 80%;
+  padding: 1rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+.form .error {
+  color: tomato;
+}
+.form .btn {
+  width: 20%;
+  background-color: #083378;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 30px;
+}
+.form .btn:hover {
+  background-color: #06285e;
+}
+
+.todolist {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0rem;
+  width: 100%;
+}
+.todolist .tasks {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  border-radius: 10px;
+  width: 100%;
+}
+.todolist .task {
+  background-color: #e1eaff;
+  width: 85%;
+  padding: 0rem 2rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+.todolist .task h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #083378;
+}
+.todolist .task .check {
+  width: 1.5rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+}
+.todolist .task .deleteBtn {
+  color: tomato;
+  font-size: 2rem;
+  margin-left: auto;
+}
+.todolist .time {
+  background-color: #e1eaff;
+  width: 15%;
+  padding: 0rem 2rem;
+  border-radius: 20px;
+}
+.todolist .time h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #083378;
+}
+
+.nav {
+  background-color: #f9a4a8;
+  justify-content: center;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  width: 100%;
+}
+.nav h1 {
+  margin: 0;
+  font-style: oblique;
+  color: #fa5a4b;
+  padding: 0 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+}
+.nav .links {
+  width: 70%;
+  justify-content: center;
+  margin-left: auto;
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+.nav .links .notActive {
+  text-decoration: none;
+}
+.nav .links .active {
+  text-decoration: none;
+}
+.nav .links .active h5 {
+  color: rgb(247, 95, 95);
+}
+.nav .links h5 {
+  color: white;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.nav .search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: white;
+  padding: 0 1rem;
+}
+.nav .search .searchItem {
+  padding: 0.6rem 0rem;
+  outline: none;
+  border-radius: 5px;
+  color: #ff7f73;
+  border-color: #ff7f73;
+  border: none;
+  font-size: 1rem;
+}
+.nav .search input::-moz-placeholder {
+  color: #f8b0b4;
+}
+.nav .search input::placeholder {
+  color: #f8b0b4;
+}
+.nav .search i {
+  font-size: 1.5rem;
+  color: #f9a4a8;
+  opacity: 0.85;
+}
+.nav .search i:hover {
+  opacity: 1;
+  scale: 1.05;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.home {
+  width: 100%;
+}
+.home .banner {
+  background-image: url("https://plus.unsplash.com/premium_photo-1669261882002-f8d7ea049dab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbGljaW91cyUyMGZvb2R8ZW58MHx8MHx8fDA%3D");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 100%;
+  height: 70vh;
+  position: relative;
+}
+.home .banner h1 {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  left: 30%;
+  bottom: 10%;
+  color: white;
+  text-transform: capitalize;
+  font-size: 5rem;
+  line-height: 4.5rem;
+  text-shadow: 2px 2px 8px #ff0000;
+}
+.home .highlights {
+  margin: 4rem 0;
+  width: 100%;
+  padding: 0 2rem;
+}
+.home .highlights h1 {
+  text-align: center;
+  color: #fa5a4b;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.home .highlights .categories {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+.home .highlights .categories .recipieCard .image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+.home .highlights .categories .recipieCard .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home .highlights .categories .recipieCard p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.createRecipie {
+  width: 100%;
+  padding: 1rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1573470571028-a0ca7a723959?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1hbnklMjBkaXNoZXN8ZW58MHx8MHx8fDA%3D");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.createRecipie form {
+  display: flex;
+  width: 40%;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcc8c4;
+  padding: 1.3rem 3rem;
+  border: 1px solid salmon;
+  border-radius: 20px;
+}
+.createRecipie form .image,
+.createRecipie form .recipieName,
+.createRecipie form .detail,
+.createRecipie form .ingredients,
+.createRecipie form .category,
+.createRecipie form .time,
+.createRecipie form .chef {
+  width: 100%;
+}
+.createRecipie form .image small,
+.createRecipie form .recipieName small,
+.createRecipie form .detail small,
+.createRecipie form .ingredients small,
+.createRecipie form .category small,
+.createRecipie form .time small,
+.createRecipie form .chef small {
+  color: rgb(228, 33, 33);
+}
+.createRecipie form .image p,
+.createRecipie form .recipieName p,
+.createRecipie form .detail p,
+.createRecipie form .ingredients p,
+.createRecipie form .category p,
+.createRecipie form .time p,
+.createRecipie form .chef p {
+  color: #f3242f;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.createRecipie form h3 {
+  color: #fa5a4b;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+.createRecipie form input,
+.createRecipie form select,
+.createRecipie form textarea {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #ff7f73;
+  border-color: #ff7f73;
+}
+.createRecipie form input::-moz-placeholder, .createRecipie form textarea::-moz-placeholder {
+  color: #f8b0b4;
+}
+.createRecipie form input::placeholder,
+.createRecipie form textarea::placeholder {
+  color: #f8b0b4;
+}
+.createRecipie form input:focus {
+  border-color: #ff7f73; /* orange-red on focus */
+  outline: none;
+}
+.createRecipie form .error {
+  color: #f9a4a8;
+  align-self: flex-start;
+}
+.createRecipie form .addBtn {
+  background-color: #ff565e;
+  color: #fcd1cd;
+  border: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+}
+.createRecipie form .addBtn:hover {
+  background-color: #ff4952;
+  scale: 1.1;
+}
+
+.recipies {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.recipies h1 {
+  color: #fa5a4b;
+  text-align: center;
+  margin: 0;
+}
+.recipies .recipieCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.recipieCardLink {
+  text-decoration: none;
+}
+.recipieCardLink .recipieCard {
+  border-radius: 5px;
+  box-shadow: 5px 5px 4px 6px #e7e7e7;
+  border-radius: 5px;
+}
+.recipieCardLink .recipieCard .img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+  border-radius: 5px;
+}
+.recipieCardLink .recipieCard .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.recipieCardLink .recipieCard .img .heading {
+  position: absolute;
+  width: 70%;
+  bottom: -5%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  background-color: white;
+  box-shadow: 2px 2px 1px 3px #dadada;
+}
+.recipieCardLink .recipieCard .img .heading h4 {
+  color: #fa7f73;
+  margin: 0;
+  text-transform: capitalize;
+  text-align: center;
+}
+.recipieCardLink .recipieCard p {
+  font-size: 1rem;
+  color: black;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  text-transform: capitalize;
+}
+.recipieCardLink .recipieCard p span {
+  text-transform: none;
+  color: #f9a4a8;
+}
+.recipieCardLink .recipieCard:hover {
+  scale: 1.05;
+  transition: all ease-in-out 0.3s;
+}
+
+.recipieDetail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+.recipieDetail .up {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  padding: 2rem 6rem;
+}
+.recipieDetail .up .image {
+  width: 40%;
+  aspect-ratio: 1/1;
+  box-shadow: 6px 4px 3px 4px rgb(214, 218, 219);
+}
+.recipieDetail .up .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.recipieDetail .up .about {
+  width: 50%;
+  position: relative;
+}
+.recipieDetail .up .about i {
+  font-size: 2.4rem;
+  color: red;
+  position: absolute;
+  right: 0;
+  top: 1.2rem;
+}
+.recipieDetail .up .about h1 {
+  color: #fa5a4b;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0.6rem 0;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.recipieDetail .up .about p {
+  margin: 0;
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+}
+.recipieDetail .up .about p span {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.recipieDetail .up .about .buttons {
+  display: flex;
+  gap: 2.3rem;
+  padding: 5rem 0;
+}
+.recipieDetail .up .about .buttons button {
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 5px;
+  opacity: 0.85;
+}
+.recipieDetail .up .about .buttons button:hover {
+  opacity: 1;
+}
+.recipieDetail .up .about .buttons .update {
+  background-color: green;
+}
+.recipieDetail .up .about .buttons .delete {
+  background-color: rgb(253, 49, 13);
+}
+.recipieDetail .bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  background-color: #f9a4a8;
+  padding: 0.5rem 3rem;
+}
+.recipieDetail .bottom .detail,
+.recipieDetail .bottom .ingredient {
+  width: 70%;
+}
+.recipieDetail .bottom .detail ul,
+.recipieDetail .bottom .ingredient ul {
+  margin: 0;
+}
+.recipieDetail .bottom .detail ul li,
+.recipieDetail .bottom .ingredient ul li {
+  color: #fa5a4b;
+}
+.recipieDetail .bottom .detail ul li span,
+.recipieDetail .bottom .ingredient ul li span {
+  color: rgb(25, 26, 25);
+  font-weight: 500;
+}
+.recipieDetail .bottom .ingredient {
+  width: 30%;
+}
+.recipieDetail .bottom .detail h1,
+.recipieDetail .bottom .ingredient h1 {
+  color: #fa5a4b;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+.recipieDetail .showForm {
+  position: absolute;
+  background-color: rgba(252, 228, 228, 0.822);
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recipieDetail .showForm form {
+  display: flex;
+  width: 40%;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcc8c4;
+  padding: 1.3rem 3rem;
+  border: 1px solid salmon;
+  border-radius: 20px;
+}
+.recipieDetail .showForm form .image,
+.recipieDetail .showForm form .recipieName,
+.recipieDetail .showForm form .detail,
+.recipieDetail .showForm form .ingredients,
+.recipieDetail .showForm form .category,
+.recipieDetail .showForm form .time,
+.recipieDetail .showForm form .chef {
+  width: 100%;
+}
+.recipieDetail .showForm form .image small,
+.recipieDetail .showForm form .recipieName small,
+.recipieDetail .showForm form .detail small,
+.recipieDetail .showForm form .ingredients small,
+.recipieDetail .showForm form .category small,
+.recipieDetail .showForm form .time small,
+.recipieDetail .showForm form .chef small {
+  color: rgb(228, 33, 33);
+}
+.recipieDetail .showForm form .image p,
+.recipieDetail .showForm form .recipieName p,
+.recipieDetail .showForm form .detail p,
+.recipieDetail .showForm form .ingredients p,
+.recipieDetail .showForm form .category p,
+.recipieDetail .showForm form .time p,
+.recipieDetail .showForm form .chef p {
+  color: #f3242f;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.recipieDetail .showForm form h3 {
+  color: #fa5a4b;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+.recipieDetail .showForm form input,
+.recipieDetail .showForm form select,
+.recipieDetail .showForm form textarea {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #ff7f73;
+  border-color: #ff7f73;
+}
+.recipieDetail .showForm form input::-moz-placeholder, .recipieDetail .showForm form textarea::-moz-placeholder {
+  color: #f8b0b4;
+}
+.recipieDetail .showForm form input::placeholder,
+.recipieDetail .showForm form textarea::placeholder {
+  color: #f8b0b4;
+}
+.recipieDetail .showForm form input:focus {
+  border-color: #ff7f73; /* orange-red on focus */
+  outline: none;
+}
+.recipieDetail .showForm form .error {
+  color: #f9a4a8;
+  align-self: flex-start;
+}
+.recipieDetail .showForm form .addBtn {
+  background-color: #ff565e;
+  color: #fcd1cd;
+  border: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+}
+.recipieDetail .showForm form .addBtn:hover {
+  background-color: #ff4952;
+  scale: 1.1;
+}/*# sourceMappingURL=App.css.map */
