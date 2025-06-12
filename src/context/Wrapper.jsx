@@ -28,12 +28,15 @@ const Wrapper = (props) => {
   },
 ]
 );
+const [originalData,setOriginalData] = useState([])
 
   useEffect(()=>{
-    setData(JSON.parse(localStorage.getItem("recipies"))|| [])
+    const local = JSON.parse(localStorage.getItem("recipies"))|| []
+    setData(local)
+    setOriginalData(local)
   },[])
   return (
-    <recepiecontext.Provider value={{ data, setData }}>
+    <recepiecontext.Provider value={{ data, setData ,originalData}}>
       {props.children}
     </recepiecontext.Provider>
   );

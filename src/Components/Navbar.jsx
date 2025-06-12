@@ -4,17 +4,18 @@ import { recepiecontext } from "../context/Wrapper";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { data, setData } = useContext(recepiecontext);
+  const { data, setData,originalData } = useContext(recepiecontext);
   const [item, setItem] = useState("");
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
   //Search Handler Function
   const searchHandler = () => {
-    const filteredRecipe = data.filter((recipe) =>
+    const filteredRecipe = originalData.filter((recipe) =>
       recipe?.recipieName.toLowerCase().includes(item.trim().toLowerCase())
     );
-    const finalRecipeList = filteredRecipe.length > 0 ? filteredRecipe : data;
+    // console.log(filteredRecipe)
+    const finalRecipeList = filteredRecipe.length > 0 ? filteredRecipe : originalData;
     setData(finalRecipeList);
     navigate("/recipies");
   };
@@ -101,6 +102,16 @@ const Navbar = () => {
                 >
                   <h5>Favourite</h5>
                 </NavLink>
+                <div className="mobileSearch">
+                  <input
+                    type="text"
+                    placeholder="search"
+                    className="searchItem"
+                    value={item}
+                    onChange={(e) => setItem(e.target.value)}
+                  />
+                  <i className="ri-search-line" onClick={searchHandler}></i>
+                </div>
               </div>
             </div>
           </>

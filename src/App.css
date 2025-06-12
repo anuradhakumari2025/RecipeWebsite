@@ -658,8 +658,8 @@ html {
   }
   .nav .mobile-menu .menuOptions {
     position: absolute;
-    left: 60%;
-    width: 40%;
+    left: 40%;
+    width: 60%;
     top: 90%;
     z-index: 5;
     background: rgba(255, 255, 255, 0.1); /* translucent white */
@@ -691,6 +691,27 @@ html {
     margin: 0;
     font-size: 2.2rem;
     padding: 0.2rem 1.5rem;
+  }
+  .nav .mobile-menu .menuOptions .mobileLinks .mobileSearch {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    margin-top: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav .mobile-menu .menuOptions .mobileLinks .mobileSearch .searchItem {
+    width: 70%;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    outline: none;
+    border: none;
+  }
+  .nav .mobile-menu .menuOptions .mobileLinks .mobileSearch i {
+    font-size: 2rem;
+    padding-right: 1rem;
   }
   .home .banner {
     height: 50vh;

@@ -612,8 +612,8 @@ html {
       }
       .menuOptions {
         position: absolute;
-        left: 60%;
-        width: 40%;
+        left: 40%;
+        width: 60%;
         top: 90%;
         z-index: 5;
         background: rgba(255, 255, 255, 0.1); /* translucent white */
@@ -645,6 +645,27 @@ html {
               padding: 0.2rem 1.5rem;
             }
             text-decoration: none;
+          }
+          .mobileSearch {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            margin-top: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            .searchItem {
+              width: 70%;
+              padding: 1rem 1.5rem;
+              font-size: 1.5rem;
+              background: rgba(255, 255, 255, 0.6);
+              outline: none;
+              border: none;
+            }
+            i {
+              font-size: 2rem;
+              padding-right: 1rem;
+            }
           }
         }
       }
