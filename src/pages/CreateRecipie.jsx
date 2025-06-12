@@ -31,7 +31,7 @@ const Service = () => {
 
           <input
             {...register("image", {
-              required: "*Please upload recipie image",
+              required: "*Please upload recipe image",
             })}
             type="url"
             placeholder="Upload Image"
@@ -46,10 +46,10 @@ const Service = () => {
           <p>Name:-</p>
           <input
             {...register("recipieName", {
-              required: "*Please add recipie name",
+              required: "*Please add recipe name",
             })}
             type="text"
-            placeholder="Recipie Name"
+            placeholder="Recipe Name"
           />
           {errors?.recipieName?.message && (
             <small className="error">{errors.recipieName.message}</small>
@@ -61,9 +61,9 @@ const Service = () => {
           <p>detail:-</p>
           <textarea
             {...register("detail", {
-              required: "*Please add recipie details",
+              required: "*Please add recipe details",
             })}
-            placeholder="Recipie detail"
+            placeholder="Recipe detail"
             rows={5}
           ></textarea>
           {errors?.detail?.message && (
@@ -76,10 +76,10 @@ const Service = () => {
           <p>Ingredients:-</p>
           <input
             {...register("ingredients", {
-              required: "*Please add recipie ingredients",
+              required: "*Please add recipe ingredients",
             })}
             type="text"
-            placeholder="Recipie Ingredients"
+            placeholder="Recipe Ingredients"
           />
           {errors?.ingredients?.message && (
             <small className="error">{errors.ingredients.message}</small>
@@ -100,6 +100,7 @@ const Service = () => {
             <option value="lunch">Lunch</option>
             <option value="supper">Supper</option>
             <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
           </select>
           {errors?.category?.message && (
             <small className="error">{errors.category.message}</small>

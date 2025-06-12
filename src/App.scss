@@ -96,12 +96,14 @@ html {
   border-radius: 20px;
 }
 
-.title {
-  font-size: 3rem;
-  color: #083378;
-  font-weight: 600;
-}
+//title of todo page
+// .title {
+//   font-size: 3rem;
+//   color: #083378;
+//   font-weight: 600;
+// }
 
+//form of to do page
 .form {
   display: flex;
   gap: 2rem;
@@ -133,6 +135,7 @@ html {
   }
 }
 
+//to do list page
 .todolist {
   display: flex;
   flex-direction: column;
@@ -170,17 +173,6 @@ html {
       // appearance: none;
       // position: relative;
     }
-    // Show a checkmark when checked
-    // .check:checked::after {
-    //   content: "✔";
-    //   color: #008500;
-    //   display: block;
-    //   position: absolute;
-    //   font-size: 2rem;
-    //   top: 50%;
-    //   left: 50%;
-    //   transform: translate(-50%, -50%);
-    // }
     .deleteBtn {
       color: tomato;
       font-size: 2rem;
@@ -201,6 +193,7 @@ html {
   }
 }
 
+//nav of recipie page
 .nav {
   background-color: #f9a4a8;
   justify-content: center;
@@ -209,6 +202,9 @@ html {
   padding: 1rem;
   align-items: center;
   width: 100%;
+  .mobile-menu {
+    display: none;
+  }
   h1 {
     margin: 0;
     font-style: oblique;
@@ -328,9 +324,12 @@ html {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-
             object-fit: cover;
           }
+        }
+        .image:hover {
+          scale: 1.08;
+          transition: all ease-in-out 0.4s;
         }
         p {
           text-align: center;
@@ -388,8 +387,6 @@ html {
 //Recipe Card
 .recipieCardLink {
   // border: 1px solid #f8bdb8;
-  // color: #f8bdb8;
-  // margin: 3rem 0;
   text-decoration: none;
   // width: 20rem;
   .recipieCard {
@@ -547,7 +544,6 @@ html {
     padding: 0.5rem 3rem;
     .detail,
     .ingredient {
-      width: 70%;
       ul {
         margin: 0;
         li {
@@ -558,18 +554,18 @@ html {
           font-weight: 500;
         }
       }
-    }
-    .ingredient {
-      width: 30%;
-    }
-    .detail,
-    .ingredient {
       h1 {
         color: #fa5a4b;
         font-weight: 500;
         margin: 0;
         padding: 0.5rem 0;
       }
+    }
+    .detail {
+      width: 70%;
+    }
+    .ingredient {
+      width: 30%;
     }
   }
 
@@ -583,9 +579,9 @@ html {
     align-items: center;
     justify-content: center;
     @include form;
-    form{
+    form {
       position: relative;
-      .close{
+      .close {
         position: absolute;
         right: -1rem;
         top: -1rem;
@@ -596,15 +592,179 @@ html {
   }
 }
 
+@media (max-width: 800px) {
+  body {
+    padding: 0 0.8rem;
+  }
+  .nav {
+    justify-content: space-between;
+    position: relative;
+    .links,
+    .search {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+      i {
+        color: #f83f49;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .menuOptions {
+        position: absolute;
+        left: 60%;
+        width: 40%;
+        top: 90%;
+        z-index: 5;
+        background: rgba(255, 255, 255, 0.1); /* translucent white */
+        backdrop-filter: blur(10px); /* main blur */
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* subtle depth */
+        border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+        padding: 1rem 0rem;
+        transition: all ease-in-out 0.4s;
+        .mobileLinks {
+          .notActive {
+            text-decoration: none;
+            h5 {
+              color: rgb(82, 81, 81);
+              margin: 0;
+              font-size: 1.8rem;
+              font-weight: 400;
+              padding: 0.2rem 1.5rem;
+            }
+            h5:hover {
+              background: rgba(255, 255, 255, 0.6);
+            }
+          }
+          .active {
+            h5 {
+              color: rgb(247, 95, 95);
+              margin: 0;
+              font-size: 2.2rem;
+              padding: 0.2rem 1.5rem;
+            }
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .home {
+    .banner {
+      height: 50vh;
+      h1 {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        // width: 100%;
+        left: 1rem;
+        bottom: 1rem;
+        text-align: center;
+        // background-color: #f3242f;
+      }
+    }
+    .highlights {
+      margin: 2rem 0;
+      padding: 0 1rem;
+      .categories {
+        grid-template-columns: repeat(1, 1fr);
+        .recipieCard {
+          .image {
+            width: 15rem;
+            margin: auto;
+          }
+          p {
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.8rem;
+            margin: 0;
+            padding: 0.2rem 0;
+          }
+        }
+      }
+    }
+  }
 
-// @media (min-width:400px){
-//   .home{
-//     .banner{
-//       h1{
-//         font-size: 1rem;
-//       }
-//     }
-//   }
-// }
+  .recipies {
+    padding: 0 1.5rem;
+    h1 {
+      font-size: 2.5rem;
+      padding-top: 2rem;
+    }
+    .recipieCards {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .recipieCardLink {
+    .recipieCard {
+      .img {
+        .heading {
+          h4 {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+
+  .recipeDetail {
+    .up {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 1rem 1.2rem;
+      .about {
+        .title {
+          h1 {
+            font-size: 2rem;
+          }
+          span {
+            i {
+              font-size: 2.2rem;
+            }
+          }
+        }
+        p {
+          font-size: 1.2rem;
+        }
+        .buttons {
+          padding: 2rem 0;
+        }
+      }
+    }
+    .bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      padding-bottom: 2rem;
+      .detail,
+      .ingredient {
+        width: 100%;
+        ul {
+          li span {
+            font-size: 1.2rem;
+          }
+        }
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    }
+    .showForm {
+      form {
+        width: 90%;
+        padding: 1.3rem 2rem;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .createRecipie {
+    form {
+      width: 90%;
+      padding: 1.3rem 2rem;
+      margin-top: 1rem;
+    }
+  }
+}
 // justify-self works with CSS Grid, not Flexbox.
 // Use margin-left: auto; or align-self for flex alignment.

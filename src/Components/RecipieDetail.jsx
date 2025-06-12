@@ -83,6 +83,13 @@ const RecipieDetail = () => {
     };
   }, [favourite]);
 
+  // Add click handler for form overlay
+  const handleFormClick = (e) => {
+    if (e.target.className === "showForm") {
+      setShowForm(false);
+    }
+  };
+
   return recipie ? (
     <div className="recipeDetail">
       <div className="up">
@@ -149,8 +156,8 @@ const RecipieDetail = () => {
       </div>
 
       {showForm && (
-        <div className="showForm">
-          <form  onSubmit={handleSubmit(submitHandler)}>
+        <div className="showForm" onClick={handleFormClick}>
+          <form onSubmit={handleSubmit(submitHandler)}>
             <h3>Update Recipe</h3>
             {/* <i className="ri-close-large-line close"></i>
             Image input field */}
@@ -225,6 +232,7 @@ const RecipieDetail = () => {
                 <option value="lunch">Lunch</option>
                 <option value="supper">Supper</option>
                 <option value="dinner">Dinner</option>
+                <option value="dessert">Dessert</option>
               </select>
               {errors?.category?.message && (
                 <small className="error">{errors.category.message}</small>
