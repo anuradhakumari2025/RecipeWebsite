@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { recepiecontext } from "../context/Wrapper";
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
           className={(e) => (e.isActive ? "active" : "notActive")}
           to={"/recipies"}
         >
-          <h5> Recipies</h5>
+          <h5> Recipes</h5>
         </NavLink>
        
 

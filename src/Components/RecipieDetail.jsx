@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { recepiecontext } from "../context/Wrapper";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -7,22 +7,11 @@ const RecipieDetail = () => {
   const { data, setData } = useContext(recepiecontext);
   const [showForm, setShowForm] = useState(false);
   const { id } = useParams();
-  const [isFav, setIsFav] = useState(false);
   // console.log(data);
   const navigate = useNavigate();
   const recipie = data.find((r) => r.id == id);
   // const recipie = data[recipieIdx];
   // console.log("recepie daetail ", recipie);
-
-  const deleteHandler = () => {
-    const fileteredRecipie = data.filter((rec) => rec.id != id);
-    // console.log(fileteredRecipie,"fileter")
-    setData(fileteredRecipie);
-    navigate("/recipies");
-  };
-  const updateHandler = () => {
-    setShowForm((prev) => !prev);
-  };
 
   const {
     register,
@@ -40,7 +29,7 @@ const RecipieDetail = () => {
     },
   });
 
-  //Update recipie
+  //Update recipie Handler function
   const submitHandler = (recipie) => {
     // console.log(recipie)
     const idx = data.findIndex((rec) => rec.id == id);
@@ -53,41 +42,65 @@ const RecipieDetail = () => {
   };
 
   // 1. Get current favs from localStorage
-  const existingFavs = JSON.parse(localStorage.getItem("fav")) || [];
-
-
-//   let existingFavs;
-// try {
-//   const data = localStorage.getItem("fav");
-//   existingFavs = Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [];
-// } catch (e) {
-//   existingFavs = [];
-// }
-
+  const [favourite, setFavourite] = useState(
+    JSON.parse(localStorage.getItem("fav")) || []
+  );
 
   const FavHandler = () => {
-    existingFavs.push(recipie)
-    localStorage.setItem("fav", JSON.stringify(existingFavs));
+    let copyFav = [...favourite];
+    copyFav.push(recipie);
+    // console.log(copyFav);
+    setFavourite(copyFav);
+    localStorage.setItem("fav", JSON.stringify(copyFav));
   };
-  const unFavHandler = () => {};
-//   console.log(existingFavs.find(f => f.id == recipie?.id))
-//   console.log("existingFavs:", existingFavs);
-// console.log("Type of existingFavs:", typeof existingFavs);
-// console.log("Is Array?", Array.isArray(existingFavs));
+  const unFavHandler = () => {
+    const filteredFav = favourite.filter((f) => f.id !== recipie.id);
+    // console.log(filteredFav);
+    setFavourite(filteredFav);
+    localStorage.setItem("fav", JSON.stringify(filteredFav));
+  };
+
+  //Delete Handler Function
+  const deleteHandler = () => {
+    const fileteredRecipie = data.filter((rec) => rec.id != id);
+    // console.log(fileteredRecipie,"fileter")
+    let filterFav = favourite.filter((fav) => fav.id !== recipie.id);
+    setFavourite(filterFav);
+    localStorage.setItem("fav", JSON.stringify(filterFav));
+
+    setData(fileteredRecipie);
+    navigate("/recipies");
+  };
+  const updateHandler = () => {
+    setShowForm((prev) => !prev);
+  };
+
+  useEffect(() => {
+    console.log("Favourite mount");
+
+    return () => {
+      console.log("Favourite Unmount");
+    };
+  }, [favourite]);
 
   return recipie ? (
-    <div className="recipieDetail">
+    <div className="recipeDetail">
       <div className="up">
         <div className="image">
           <img src={recipie?.image} alt="" />
         </div>
         <div className="about">
-          {existingFavs?.find(f => f.id == recipie?.id) ? (
-            <i onClick={unFavHandler} className="ri-heart-fill"></i>
-          ) : (
-            <i onClick={FavHandler} className="ri-heart-line"></i>
-          )}
-          <h1>{recipie?.recipieName}</h1>
+          <div className="title">
+            <h1>{recipie?.recipieName}</h1>
+            <span>
+              {/* Input for favourite */}
+              {favourite?.find((f) => f.id == recipie?.id) ? (
+                <i onClick={unFavHandler} className="ri-heart-fill"></i>
+              ) : (
+                <i onClick={FavHandler} className="ri-heart-line"></i>
+              )}
+            </span>
+          </div>
           <p>
             Recipie by <span>{recipie?.chef}</span>
           </p>
@@ -95,7 +108,7 @@ const RecipieDetail = () => {
             <span>Total:</span> {recipie?.time} min
           </p>
           <p>
-            <span>Category: </span> {recipie?.category}{" "}
+            <span>Category: </span> {recipie?.category}
           </p>
           <div className="buttons">
             <button className="update" onClick={updateHandler}>
@@ -122,26 +135,30 @@ const RecipieDetail = () => {
         <div className="detail">
           <h1>Directions</h1>
           <ul>
-            {recipie?.detail?.split(",").map((step, index) => (
-              <li key={index}>
-                <span>{step.trim()}</span>
-              </li>
-            ))}
+            {recipie?.detail
+              ?.split(",")
+              .map((step) => step.trim())
+              .filter((step) => step.length > 0)
+              .map((step, index) => (
+                <li key={index}>
+                  <span>{step}</span>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
 
       {showForm && (
         <div className="showForm">
-          <form onSubmit={handleSubmit(submitHandler)}>
-            <h3>Update Recipie</h3>
-
-            {/* Image input field */}
+          <form  onSubmit={handleSubmit(submitHandler)}>
+            <h3>Update Recipe</h3>
+            {/* <i className="ri-close-large-line close"></i>
+            Image input field */}
             <div className="image">
               <p>image url:-</p>
               <input
                 {...register("image", {
-                  required: "*Please upload recipie image",
+                  required: "*Please upload recipe image",
                 })}
                 type="url"
                 placeholder="Upload Image"
@@ -156,10 +173,10 @@ const RecipieDetail = () => {
               <p>Name:-</p>
               <input
                 {...register("recipieName", {
-                  required: "*Please add recipie name",
+                  required: "*Please add recipe name",
                 })}
                 type="text"
-                placeholder="Recipie Name"
+                placeholder="Recipe Name"
               />
               {errors?.recipieName?.message && (
                 <small className="error">{errors.recipieName.message}</small>
@@ -171,9 +188,9 @@ const RecipieDetail = () => {
               <p>detail:-</p>
               <textarea
                 {...register("detail", {
-                  required: "*Please add recipie details",
+                  required: "*Please add recipe details",
                 })}
-                placeholder="Recipie detail"
+                placeholder="Recipe detail"
                 rows={5}
               ></textarea>
               {errors?.detail?.message && (
@@ -185,10 +202,10 @@ const RecipieDetail = () => {
               <p>Ingredients:-</p>
               <input
                 {...register("ingredients", {
-                  required: "*Please add recipie ingredients",
+                  required: "*Please add recipe ingredients",
                 })}
                 type="text"
-                placeholder="Recipie Ingredients"
+                placeholder="Recipe Ingredients"
               />
               {errors?.ingredients?.message && (
                 <small className="error">{errors.ingredients.message}</small>
@@ -244,7 +261,7 @@ const RecipieDetail = () => {
               )}
             </div>
 
-            <button className="addBtn">Update Recipie</button>
+            <button className="addBtn">Update Recipe</button>
           </form>
         </div>
       )}

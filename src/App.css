@@ -261,7 +261,6 @@ html {
   background-color: #fcc8c4;
   padding: 1.3rem 3rem;
   border: 1px solid salmon;
-  border-radius: 20px;
 }
 .createRecipie form .image,
 .createRecipie form .recipieName,
@@ -358,6 +357,13 @@ html {
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
+.recipies .noFav {
+  text-align: center;
+  width: 100%;
+  color: #f3242f;
+  margin: 3rem 0;
+  font-size: 3rem;
+}
 
 .recipieCardLink {
   text-decoration: none;
@@ -414,45 +420,36 @@ html {
   transition: all ease-in-out 0.3s;
 }
 
-.recipieDetail {
+.recipeDetail {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
 }
-.recipieDetail .up {
+.recipeDetail .up {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 5rem;
-  padding: 2rem 6rem;
+  padding: 2rem 3rem;
 }
-.recipieDetail .up .image {
-  width: 40%;
-  aspect-ratio: 1/1;
-  box-shadow: 6px 4px 3px 4px rgb(214, 218, 219);
+.recipeDetail .up .image {
+  box-shadow: 6px 4px 3px 4px rgba(214, 218, 219, 0.808);
 }
-.recipieDetail .up .image img {
+.recipeDetail .up .image img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.recipieDetail .up .about {
-  width: 50%;
-  position: relative;
+.recipeDetail .up .about .title {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
-.recipieDetail .up .about i {
-  font-size: 2.4rem;
-  color: red;
-  position: absolute;
-  right: 0;
-  top: 1.2rem;
-}
-.recipieDetail .up .about h1 {
+.recipeDetail .up .about .title h1 {
   color: #fa5a4b;
   text-transform: capitalize;
   margin: 0;
@@ -460,21 +457,25 @@ html {
   font-weight: 600;
   font-size: 3rem;
 }
-.recipieDetail .up .about p {
+.recipeDetail .up .about .title span i {
+  font-size: 3rem;
+  color: red;
+}
+.recipeDetail .up .about p {
   margin: 0;
   font-size: 1.5rem;
   padding: 0.5rem 0;
 }
-.recipieDetail .up .about p span {
+.recipeDetail .up .about p span {
   font-weight: 500;
   text-transform: capitalize;
 }
-.recipieDetail .up .about .buttons {
+.recipeDetail .up .about .buttons {
   display: flex;
   gap: 2.3rem;
   padding: 5rem 0;
 }
-.recipieDetail .up .about .buttons button {
+.recipeDetail .up .about .buttons button {
   padding: 1rem 2rem;
   border: none;
   font-size: 1.2rem;
@@ -482,16 +483,16 @@ html {
   border-radius: 5px;
   opacity: 0.85;
 }
-.recipieDetail .up .about .buttons button:hover {
+.recipeDetail .up .about .buttons button:hover {
   opacity: 1;
 }
-.recipieDetail .up .about .buttons .update {
+.recipeDetail .up .about .buttons .update {
   background-color: green;
 }
-.recipieDetail .up .about .buttons .delete {
+.recipeDetail .up .about .buttons .delete {
   background-color: rgb(253, 49, 13);
 }
-.recipieDetail .bottom {
+.recipeDetail .bottom {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -499,34 +500,34 @@ html {
   background-color: #f9a4a8;
   padding: 0.5rem 3rem;
 }
-.recipieDetail .bottom .detail,
-.recipieDetail .bottom .ingredient {
+.recipeDetail .bottom .detail,
+.recipeDetail .bottom .ingredient {
   width: 70%;
 }
-.recipieDetail .bottom .detail ul,
-.recipieDetail .bottom .ingredient ul {
+.recipeDetail .bottom .detail ul,
+.recipeDetail .bottom .ingredient ul {
   margin: 0;
 }
-.recipieDetail .bottom .detail ul li,
-.recipieDetail .bottom .ingredient ul li {
+.recipeDetail .bottom .detail ul li,
+.recipeDetail .bottom .ingredient ul li {
   color: #fa5a4b;
 }
-.recipieDetail .bottom .detail ul li span,
-.recipieDetail .bottom .ingredient ul li span {
+.recipeDetail .bottom .detail ul li span,
+.recipeDetail .bottom .ingredient ul li span {
   color: rgb(25, 26, 25);
   font-weight: 500;
 }
-.recipieDetail .bottom .ingredient {
+.recipeDetail .bottom .ingredient {
   width: 30%;
 }
-.recipieDetail .bottom .detail h1,
-.recipieDetail .bottom .ingredient h1 {
+.recipeDetail .bottom .detail h1,
+.recipeDetail .bottom .ingredient h1 {
   color: #fa5a4b;
   font-weight: 500;
   margin: 0;
   padding: 0.5rem 0;
 }
-.recipieDetail .showForm {
+.recipeDetail .showForm {
   position: absolute;
   background-color: rgba(252, 228, 228, 0.822);
   width: 100%;
@@ -535,7 +536,7 @@ html {
   align-items: center;
   justify-content: center;
 }
-.recipieDetail .showForm form {
+.recipeDetail .showForm form {
   display: flex;
   width: 40%;
   gap: 1rem;
@@ -545,33 +546,32 @@ html {
   background-color: #fcc8c4;
   padding: 1.3rem 3rem;
   border: 1px solid salmon;
-  border-radius: 20px;
 }
-.recipieDetail .showForm form .image,
-.recipieDetail .showForm form .recipieName,
-.recipieDetail .showForm form .detail,
-.recipieDetail .showForm form .ingredients,
-.recipieDetail .showForm form .category,
-.recipieDetail .showForm form .time,
-.recipieDetail .showForm form .chef {
+.recipeDetail .showForm form .image,
+.recipeDetail .showForm form .recipieName,
+.recipeDetail .showForm form .detail,
+.recipeDetail .showForm form .ingredients,
+.recipeDetail .showForm form .category,
+.recipeDetail .showForm form .time,
+.recipeDetail .showForm form .chef {
   width: 100%;
 }
-.recipieDetail .showForm form .image small,
-.recipieDetail .showForm form .recipieName small,
-.recipieDetail .showForm form .detail small,
-.recipieDetail .showForm form .ingredients small,
-.recipieDetail .showForm form .category small,
-.recipieDetail .showForm form .time small,
-.recipieDetail .showForm form .chef small {
+.recipeDetail .showForm form .image small,
+.recipeDetail .showForm form .recipieName small,
+.recipeDetail .showForm form .detail small,
+.recipeDetail .showForm form .ingredients small,
+.recipeDetail .showForm form .category small,
+.recipeDetail .showForm form .time small,
+.recipeDetail .showForm form .chef small {
   color: rgb(228, 33, 33);
 }
-.recipieDetail .showForm form .image p,
-.recipieDetail .showForm form .recipieName p,
-.recipieDetail .showForm form .detail p,
-.recipieDetail .showForm form .ingredients p,
-.recipieDetail .showForm form .category p,
-.recipieDetail .showForm form .time p,
-.recipieDetail .showForm form .chef p {
+.recipeDetail .showForm form .image p,
+.recipeDetail .showForm form .recipieName p,
+.recipeDetail .showForm form .detail p,
+.recipeDetail .showForm form .ingredients p,
+.recipeDetail .showForm form .category p,
+.recipeDetail .showForm form .time p,
+.recipeDetail .showForm form .chef p {
   color: #f3242f;
   font-weight: 500;
   font-size: 1.2rem;
@@ -579,15 +579,15 @@ html {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
-.recipieDetail .showForm form h3 {
+.recipeDetail .showForm form h3 {
   color: #fa5a4b;
   font-size: 2.2rem;
   font-weight: 500;
   margin: 0;
 }
-.recipieDetail .showForm form input,
-.recipieDetail .showForm form select,
-.recipieDetail .showForm form textarea {
+.recipeDetail .showForm form input,
+.recipeDetail .showForm form select,
+.recipeDetail .showForm form textarea {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   width: 100%;
@@ -596,22 +596,22 @@ html {
   color: #ff7f73;
   border-color: #ff7f73;
 }
-.recipieDetail .showForm form input::-moz-placeholder, .recipieDetail .showForm form textarea::-moz-placeholder {
+.recipeDetail .showForm form input::-moz-placeholder, .recipeDetail .showForm form textarea::-moz-placeholder {
   color: #f8b0b4;
 }
-.recipieDetail .showForm form input::placeholder,
-.recipieDetail .showForm form textarea::placeholder {
+.recipeDetail .showForm form input::placeholder,
+.recipeDetail .showForm form textarea::placeholder {
   color: #f8b0b4;
 }
-.recipieDetail .showForm form input:focus {
+.recipeDetail .showForm form input:focus {
   border-color: #ff7f73; /* orange-red on focus */
   outline: none;
 }
-.recipieDetail .showForm form .error {
+.recipeDetail .showForm form .error {
   color: #f9a4a8;
   align-self: flex-start;
 }
-.recipieDetail .showForm form .addBtn {
+.recipeDetail .showForm form .addBtn {
   background-color: #ff565e;
   color: #fcd1cd;
   border: none;
@@ -621,7 +621,17 @@ html {
   font-size: 1.1rem;
   border-radius: 30px;
 }
-.recipieDetail .showForm form .addBtn:hover {
+.recipeDetail .showForm form .addBtn:hover {
   background-color: #ff4952;
   scale: 1.1;
+}
+.recipeDetail .showForm form {
+  position: relative;
+}
+.recipeDetail .showForm form .close {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  font-size: 2.2rem;
+  color: #f83f49;
 }/*# sourceMappingURL=App.css.map */
