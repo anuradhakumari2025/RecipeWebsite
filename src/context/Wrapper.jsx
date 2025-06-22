@@ -44,6 +44,4 @@ const [originalData,setOriginalData] = useState([])
 
 export default Wrapper;
 
-{
-  /* <NavLink className ={{(e)=>e.isActive?"text-red":"text-green"}}></NavLink> */
-}
+

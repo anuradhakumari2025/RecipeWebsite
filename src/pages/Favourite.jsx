@@ -2,8 +2,6 @@ import RecipieCard from "../Components/RecipieCard";
 
 const Favourite = () => {
   const favourite = JSON.parse(localStorage.getItem("fav")) || [];
-  // console.log(favourite);
-
   return (
     <div>
       <div className="recipies">

@@ -63,7 +63,7 @@ const Service = () => {
             {...register("detail", {
               required: "*Please add recipe details",
             })}
-            placeholder="Recipe detail"
+            placeholder="Recipe detail, use fullstop(.) for new line"
             rows={5}
           ></textarea>
           {errors?.detail?.message && (
@@ -79,7 +79,7 @@ const Service = () => {
               required: "*Please add recipe ingredients",
             })}
             type="text"
-            placeholder="Recipe Ingredients"
+            placeholder="Recipe Ingredients, use fullstop(.) for new line"
           />
           {errors?.ingredients?.message && (
             <small className="error">{errors.ingredients.message}</small>
@@ -101,6 +101,7 @@ const Service = () => {
             <option value="supper">Supper</option>
             <option value="dinner">Dinner</option>
             <option value="dessert">Dessert</option>
+            <option value="beverage">Beverage</option>
           </select>
           {errors?.category?.message && (
             <small className="error">{errors.category.message}</small>
